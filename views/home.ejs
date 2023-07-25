@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+    <h1>
+        <%= contentHome.title %>
+    </h1>
+    <p>
+        <%=contentHome.content %>
+    </p>
+
+    <% if(locals.posts) {%>
+        <% posts.forEach((valor)=>{%>
+
+            <h1>
+                <%= valor.title %>
+            </h1>
+            <p>
+                <%= valor.content.substring(0,100) + " ..." %>
+                    <a href="/posts/<%=valor.title%>">Read More</a>
+            </p>
+            <% }) %>
+                <% } %>
+
+
+
+                    <%- include("partials/footer.ejs") %>
