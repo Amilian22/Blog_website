@@ -2,7 +2,6 @@
 import express from "express";
 import lodash from "lodash";
 import mongoose from "mongoose";
-import Serverless from "serverless-http";
 import { Router } from "express";
 
 const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
@@ -40,6 +39,8 @@ const taskSchema = mongoose.Schema({
 })
 
 const Task = mongoose.model("Task", taskSchema)
+
+app.use(router)
 
 
 router.get("/", async (req, res) => {
@@ -83,11 +84,11 @@ router.get("/posts/:tasks", async (req, res) => {
   })
 })
 
-app.use(router)
 
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
 
 
-module.exports.handler = Serverless(app);
+
+export default app

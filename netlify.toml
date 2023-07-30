@@ -1,7 +1,10 @@
-[build]
-functions = "netlify-functions"
+[functions]
+    external_node_modules=["express","ejs","mongoose","lodash"]
+    node_bundler="esbuild"
+    included_files=["views/*","views/partials/*","public/css/styles.css"]
 
 [[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+    from = "/*"
+    status = 200
+    force=true
+    to = "/.netlify/functions/api/:splat"
